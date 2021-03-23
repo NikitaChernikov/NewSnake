@@ -221,7 +221,7 @@ Transform:
   m_Children:
   - {fileID: 1736274027}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &295499458
 GameObject:
@@ -517,7 +517,7 @@ Transform:
   m_Children:
   - {fileID: 764285832}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &531788595
 GameObject:
@@ -946,7 +946,7 @@ Transform:
   m_Children:
   - {fileID: 946673754}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &875426310
 GameObject:
@@ -1046,7 +1046,7 @@ Transform:
   m_Children:
   - {fileID: 531788596}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &946673753
 GameObject:
@@ -1284,7 +1284,7 @@ Transform:
   m_LocalScale: {x: 0.6212935, y: 0.6212935, z: 0.6212935}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1368079262
 BoxCollider2D:
@@ -1345,12 +1345,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e987bb013ac173e4fb697109480e42cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  rotateAmount: 2
+  moveSpeed: 1
+  rotateAmount: 1
+  winScore: 5
   winText: {fileID: 1499734774}
   isDead: 0
   StartTime: 0
   EndTime: 0.09
+  isWin: 0
 --- !u!95 &1368079265
 Animator:
   serializedVersion: 3
@@ -1589,7 +1591,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6de610ccbbc0a094b804153e2dea43a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1614,7 +1616,7 @@ Transform:
   m_Children:
   - {fileID: 1887444853}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1690198725
 BoxCollider2D:
@@ -1911,7 +1913,7 @@ Transform:
   m_Children:
   - {fileID: 2007038192}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1839912696
 GameObject:
@@ -1971,7 +1973,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6de610ccbbc0a094b804153e2dea43a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1996,7 +1998,7 @@ Transform:
   m_Children:
   - {fileID: 1909399345}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1839912699
 BoxCollider2D:
@@ -2354,7 +2356,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1965675369
 RectTransform:
@@ -2369,7 +2371,7 @@ RectTransform:
   m_Children:
   - {fileID: 1499734775}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2586,7 +2588,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6de610ccbbc0a094b804153e2dea43a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2611,7 +2613,7 @@ Transform:
   m_Children:
   - {fileID: 856603605}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2070717313
 BoxCollider2D:
@@ -2716,7 +2718,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6de610ccbbc0a094b804153e2dea43a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2741,7 +2743,7 @@ Transform:
   m_Children:
   - {fileID: 1633889045}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2133587769
 BoxCollider2D:

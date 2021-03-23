@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     public float moveSpeed;
     public float rotateAmount;
+    public int winScore;
     float rot;
     int score;
     public GameObject winText;
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
     public bool isDead;
     public float StartTime;
     public float EndTime;
+    public bool isWin;
 
     private void Awake()
     {
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isWin = false;
         isDead = false;
         anim.SetBool("isWalk", true);
     }
@@ -35,32 +38,35 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (!isWin)
         {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            if(mousePos.x < 0)
+            if (Input.GetMouseButton(0))
             {
-                sr.flipX = true;
-                rot = rotateAmount;
-            }
-            else
-            {
-                sr.flipX = false;
-                rot = -rotateAmount;
-            }
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            transform.Rotate(0, 0, rot);
+                if (mousePos.x < 0)
+                {
+                    sr.flipX = true;
+                    rot = rotateAmount;
+                }
+                else
+                {
+                    sr.flipX = false;
+                    rot = -rotateAmount;
+                }
+
+                transform.Rotate(0, 0, rot);
+            }
         }
     }
 
     private void FixedUpdate()
     {
-        if (!isDead)
+        if (!isDead && !isWin)
         {
             rb.velocity = transform.up * moveSpeed;
         }
-        else
+        else if (isDead)
         {
             anim.SetBool("isDead", true);
             rb.velocity = transform.up * 0;
@@ -71,6 +77,11 @@ public class Player : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+        else if (isWin)
+        {
+            rb.velocity = transform.up * 0;
+            winText.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -79,11 +90,13 @@ public class Player : MonoBehaviour
         {
             anim.SetTrigger("doTouch");
             Destroy(collision.gameObject);
+            moveSpeed += 0.5f;
             score++;
 
-            if(score >= 5)
+            if(score >= winScore)
             {
-                winText.SetActive(true);
+                isWin = true;
+                
             }
         }
         else if (collision.gameObject.tag == "Danger")

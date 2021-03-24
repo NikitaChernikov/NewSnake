@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Food
   - Danger
+  - Cloud
   layers:
   - Default
   - TransparentFX

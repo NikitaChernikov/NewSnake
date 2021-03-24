@@ -1346,7 +1346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  rotateAmount: 1
+  rotateAmount: 2
   winScore: 5
   winText: {fileID: 1499734774}
   isDead: 0

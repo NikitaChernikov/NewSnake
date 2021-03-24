@@ -88,6 +88,7 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.tag == "Food")
         {
+            Handheld.Vibrate();
             anim.SetTrigger("doTouch");
             Destroy(collision.gameObject);
             moveSpeed += 0.5f;
@@ -101,7 +102,7 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Danger")
         {
-            
+            Handheld.Vibrate();
             isDead = true;
             //SceneManager.LoadScene("Level 1");
         }

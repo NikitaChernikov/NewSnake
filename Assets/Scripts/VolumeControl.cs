@@ -18,6 +18,7 @@ public class VolumeControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        FindObjectOfType<Canvas>().GetComponent<AudioSource>().volume = slider.value;
+        //FindObjectOfType<Canvas>().GetComponent<AudioSource>().volume = slider.value;
+        
     }
 }

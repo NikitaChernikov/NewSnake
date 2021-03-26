@@ -22,8 +22,11 @@ public class Player : MonoBehaviour
 
     public bool isVibrate;
 
+    public AudioManager audioManager;
+
     private void Awake()
     {
+        audioManager = GetComponent<AudioManager>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
@@ -94,6 +97,7 @@ public class Player : MonoBehaviour
             {
                 Handheld.Vibrate();
             }
+            audioManager.Play("EatingSound");
             anim.SetTrigger("doTouch");
             Destroy(collision.gameObject);
             moveSpeed += 0.5f;

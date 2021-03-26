@@ -8,15 +8,32 @@ using UnityEngine.UI;
 public class MuteToggle : MonoBehaviour
 {
     Toggle myToggle;
-    public Sound sound;
+
+   // public GameObject sound;
 
     // Start is called before the first frame update
+
+    //public static MuteToggle instance;
+
     [System.Obsolete]
     void Start()
     {
-        
+        //sound = GameObject.FindGameObjectWithTag("AudioManager");
+
+        /*if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);*/
+
         myToggle = GetComponent<Toggle>();
-        if (sound.volume == 0)
+
+
+        if (GameObject.FindGameObjectWithTag("AudioManager").active)
         {
             myToggle.isOn = false;
         }
@@ -26,11 +43,11 @@ public class MuteToggle : MonoBehaviour
     {
         if(audioIn)
         {
-            sound.volume = 1f;
+            GameObject.Find("AudioManager").SetActive(true);
         }
         else
         {
-            sound.volume = 0f;
+            GameObject.Find("AudioManager").SetActive(false);
         }
     }
 }

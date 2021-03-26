@@ -866,18 +866,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350867620}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4693a2fffb334514d958bf277990c9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound:
-    name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
-    source: {fileID: 0}
 --- !u!114 &350867623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -924,10 +917,10 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 350867622}
-        m_TargetAssemblyTypeName: MuteToggle, Assembly-CSharp
+      - m_Target: {fileID: 772877777}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: ToggleAudioOnValueChange
-        m_Mode: 0
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2480,7 +2473,7 @@ GameObject:
   - component: {fileID: 772877777}
   m_Layer: 0
   m_Name: AudioManager
-  m_TagString: Untagged
+  m_TagString: AudioManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2510,6 +2503,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  isMute: 0
 --- !u!4 &772877778
 Transform:
   m_ObjectHideFlags: 0

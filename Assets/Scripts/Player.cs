@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class Player : MonoBehaviour
     public int winScore;
     float rot;
     int score;
-    public GameObject winText;
+    //public GameObject winText;
+    public GameObject winScreen;
     Animator anim;
     SpriteRenderer sr;
 
@@ -22,11 +24,10 @@ public class Player : MonoBehaviour
 
     public bool isVibrate;
 
-    public AudioManager audioManager;
+    public Button button;
 
     private void Awake()
     {
-        audioManager = GetComponent<AudioManager>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
@@ -70,6 +71,7 @@ public class Player : MonoBehaviour
         if (!isDead && !isWin)
         {
             rb.velocity = transform.up * moveSpeed;
+            
         }
         else if (isDead)
         {
@@ -85,7 +87,8 @@ public class Player : MonoBehaviour
         else if (isWin)
         {
             rb.velocity = transform.up * 0;
-            winText.SetActive(true);
+            winScreen.SetActive(true);
+            //winText.SetActive(true);
         }
     }
 
@@ -97,7 +100,7 @@ public class Player : MonoBehaviour
             {
                 Handheld.Vibrate();
             }
-            audioManager.Play("EatingSound");
+            FindObjectOfType<AudioManager>().Play("EatingSound");
             anim.SetTrigger("doTouch");
             Destroy(collision.gameObject);
             moveSpeed += 0.5f;
@@ -111,20 +114,11 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Danger")
         {
+            FindObjectOfType<AudioManager>().Play("DeathSound");
             if (isVibrate)
                 Handheld.Vibrate();
             isDead = true;
             SceneManager.LoadScene("Menu");
         }
-    }
-
-    public void VibrateOff()
-    {
-        isVibrate = false;
-        
-    }
-    public void VibrateOn()
-    {
-        isVibrate = true;
     }
 }

@@ -22,9 +22,9 @@ public class Player : MonoBehaviour
     public float EndTime;
     public bool isWin;
 
-    public bool isVibrate;
+    public bool isPause = false;
 
-    public Button button;
+    public bool isVibrate;
 
     private void Awake()
     {
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isWin)
+        if (!isWin && !isPause)
         {
             if (Input.GetMouseButton(0))
             {
@@ -68,10 +68,13 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isDead && !isWin)
+        if (!isDead && !isWin && !isPause)
         {
-            rb.velocity = transform.up * moveSpeed;
-            
+            rb.velocity = transform.up * moveSpeed; 
+        }
+        else if (isPause)
+        {
+            rb.velocity = transform.up * 0;
         }
         else if (isDead)
         {
@@ -100,7 +103,7 @@ public class Player : MonoBehaviour
             {
                 Handheld.Vibrate();
             }
-            FindObjectOfType<AudioManager>().Play("EatingSound");
+            //FindObjectOfType<AudioManager>().Play("EatingSound");
             anim.SetTrigger("doTouch");
             Destroy(collision.gameObject);
             moveSpeed += 0.5f;
@@ -114,11 +117,21 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Danger")
         {
-            FindObjectOfType<AudioManager>().Play("DeathSound");
+            //FindObjectOfType<AudioManager>().Play("DeathSound");
             if (isVibrate)
                 Handheld.Vibrate();
             isDead = true;
             SceneManager.LoadScene("Menu");
         }
+    }
+
+    public void PauseOn ()
+    {
+        isPause = true;
+    }
+
+    public void PauseOff()
+    {
+        isPause = false;
     }
 }

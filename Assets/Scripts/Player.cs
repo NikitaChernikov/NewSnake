@@ -12,8 +12,9 @@ public class Player : MonoBehaviour
     public int winScore;
     float rot;
     int score;
-    //public GameObject winText;
+
     public GameObject winScreen;
+    public GameObject LoseScreen;
     Animator anim;
     SpriteRenderer sr;
 
@@ -91,7 +92,6 @@ public class Player : MonoBehaviour
         {
             rb.velocity = transform.up * 0;
             winScreen.SetActive(true);
-            //winText.SetActive(true);
         }
     }
 
@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
             if (isVibrate)
                 Handheld.Vibrate();
             isDead = true;
-            SceneManager.LoadScene("Menu");
+            LoseScreen.SetActive(true);
         }
     }
 

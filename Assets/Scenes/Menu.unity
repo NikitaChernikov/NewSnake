@@ -2496,10 +2496,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -4402,7 +4402,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 68302258457181384, guid: 6686491dad2da4e4cbeeb0ca69249942, type: 3}
       propertyPath: sounds.Array.size
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 68302258457181384, guid: 6686491dad2da4e4cbeeb0ca69249942, type: 3}
       propertyPath: sounds.Array.data[2].loop
@@ -4422,6 +4422,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 68302258457181384, guid: 6686491dad2da4e4cbeeb0ca69249942, type: 3}
       propertyPath: sounds.Array.data[3].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 68302258457181384, guid: 6686491dad2da4e4cbeeb0ca69249942, type: 3}
+      propertyPath: sounds.Array.data[4].name
+      value: WinSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 68302258457181384, guid: 6686491dad2da4e4cbeeb0ca69249942, type: 3}
+      propertyPath: sounds.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3b7cea2252b4b6b45bab4864f9faeef8, type: 3}
+    - target: {fileID: 68302258457181384, guid: 6686491dad2da4e4cbeeb0ca69249942, type: 3}
+      propertyPath: sounds.Array.data[4].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 68302258457181384, guid: 6686491dad2da4e4cbeeb0ca69249942, type: 3}
+      propertyPath: sounds.Array.data[4].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 68302258457181384, guid: 6686491dad2da4e4cbeeb0ca69249942, type: 3}
+      propertyPath: sounds.Array.data[5].name
+      value: PauseIn
+      objectReference: {fileID: 0}
+    - target: {fileID: 68302258457181384, guid: 6686491dad2da4e4cbeeb0ca69249942, type: 3}
+      propertyPath: sounds.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d46fc59147b0a984db39e2091afb865b, type: 3}
+    - target: {fileID: 68302258457181384, guid: 6686491dad2da4e4cbeeb0ca69249942, type: 3}
+      propertyPath: sounds.Array.data[5].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 68302258457181384, guid: 6686491dad2da4e4cbeeb0ca69249942, type: 3}
+      propertyPath: sounds.Array.data[5].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 68302258457181384, guid: 6686491dad2da4e4cbeeb0ca69249942, type: 3}
+      propertyPath: sounds.Array.data[6].name
+      value: PauseOut
+      objectReference: {fileID: 0}
+    - target: {fileID: 68302258457181384, guid: 6686491dad2da4e4cbeeb0ca69249942, type: 3}
+      propertyPath: sounds.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2fc58d986242aa845b0c76cfcba21fcc, type: 3}
+    - target: {fileID: 68302258457181384, guid: 6686491dad2da4e4cbeeb0ca69249942, type: 3}
+      propertyPath: sounds.Array.data[6].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 68302258457181384, guid: 6686491dad2da4e4cbeeb0ca69249942, type: 3}
+      propertyPath: sounds.Array.data[6].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 68302258457181385, guid: 6686491dad2da4e4cbeeb0ca69249942, type: 3}

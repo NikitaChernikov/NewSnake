@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
             {
                 Handheld.Vibrate();
             }
-            FindObjectOfType<AudioManager>().Play("EatingSound");
+            //FindObjectOfType<AudioManager>().Play("EatingSound");
             anim.SetTrigger("doTouch");
             Destroy(collision.gameObject);
             moveSpeed += 0.5f;
@@ -112,12 +112,12 @@ public class Player : MonoBehaviour
             if(score >= winScore)
             {
                 isWin = true;
-                FindObjectOfType<AudioManager>().Play("WinSound");
+                //FindObjectOfType<AudioManager>().Play("WinSound");
             }
         }
         else if (collision.gameObject.tag == "Danger")
         {
-            FindObjectOfType<AudioManager>().Play("DeathSound");
+            //FindObjectOfType<AudioManager>().Play("DeathSound");
             if (isVibrate)
                 Handheld.Vibrate();
             isDead = true;
@@ -127,13 +127,13 @@ public class Player : MonoBehaviour
 
     public void PauseOn ()
     {
-        FindObjectOfType<AudioManager>().Play("PauseIn");
+        //FindObjectOfType<AudioManager>().Play("PauseIn");
         isPause = true;
     }
 
     public void PauseOff()
     {
-        FindObjectOfType<AudioManager>().Play("PauseOut");
+        //FindObjectOfType<AudioManager>().Play("PauseOut");
         isPause = false;
     }
 }

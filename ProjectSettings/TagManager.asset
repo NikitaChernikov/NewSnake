@@ -9,6 +9,8 @@ TagManager:
   - Cloud
   - Canvas
   - AudioManager
+  - RightBorder
+  - LeftBorder
   layers:
   - Default
   - TransparentFX

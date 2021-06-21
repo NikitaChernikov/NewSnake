@@ -23,6 +23,11 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadLevel(2));
     }
 
+    public void PlayLevelThree()
+    {
+        StartCoroutine(LoadLevel(3));
+    }
+
     public void RestartLevel()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 0));

@@ -11,6 +11,8 @@ TagManager:
   - AudioManager
   - RightBorder
   - LeftBorder
+  - UpBorder
+  - ButtomBorder
   layers:
   - Default
   - TransparentFX

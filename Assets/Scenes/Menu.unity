@@ -3718,6 +3718,7 @@ GameObject:
   - component: {fileID: 1695914613}
   - component: {fileID: 1695914612}
   - component: {fileID: 1695914611}
+  - component: {fileID: 1695914614}
   m_Layer: 5
   m_Name: 3 Level
   m_TagString: Untagged
@@ -3774,7 +3775,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: 52b724b9e726d284cbc46560271f610b, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 114b73272a3eb304eaa933f993f52daf, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -3787,7 +3788,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1695914612}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1695914614}
+        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2029771643}
+        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
+        m_MethodName: PlayLevelThree
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1695914612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3808,7 +3833,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 555ce7d63ce64d54e903e2910b21b036, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a0f4250cbe373934cbf19859e5723274, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3826,6 +3851,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695914609}
   m_CullTransparentMesh: 0
+--- !u!114 &1695914614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695914609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded3978860c870245a8b34c8c030e203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1700395967
 GameObject:
   m_ObjectHideFlags: 0
@@ -4236,6 +4273,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2029771643 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2616624981643372905, guid: 0ca35c19de270974587e6b8c3f0c56b4, type: 3}
+  m_PrefabInstance: {fileID: 2616624982999786070}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 799156188dd11304784f6022c49b44c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2108442239
 GameObject:
   m_ObjectHideFlags: 0

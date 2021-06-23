@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    /*int currentLevel = SceneManager.GetActiveScene().buildIndex;*/
 
     public GameObject LevelScript;
 
@@ -23,7 +22,7 @@ public class Player : MonoBehaviour
     public GameObject winScreen;
     public GameObject LoseScreen;
     Animator anim;
-    SpriteRenderer sr;
+    public SpriteRenderer sr;
 
     public bool isDead;
     public float StartTime;
@@ -44,6 +43,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         pass = LevelScript.GetComponent<Level>();
 
         isWin = false;
@@ -54,6 +54,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
+
         if (!isWin && !isPause)
         {
             if (Input.GetMouseButton(0))
@@ -104,11 +107,9 @@ public class Player : MonoBehaviour
 
 
             pass.Pass();
-            /*if (currentLevel >= PlayerPrefs.GetInt("levelsUnlocked"))
-            {
-                PlayerPrefs.SetInt("levelsUnlocked", currentLevel + 1);
-            }*/
         }
+
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -119,7 +120,7 @@ public class Player : MonoBehaviour
             {
                 Handheld.Vibrate();
             }
-            FindObjectOfType<AudioManager>().Play("EatingSound");
+            //FindObjectOfType<AudioManager>().Play("EatingSound");
             anim.SetTrigger("doTouch");
             Destroy(collision.gameObject);
             moveSpeed += 0.5f;
@@ -139,6 +140,19 @@ public class Player : MonoBehaviour
             isDead = true;
             LoseScreen.SetActive(true);
         }
+
+        else if (collision.gameObject.tag == "Invisible")
+        {
+            this.sr.enabled = false;
+            Destroy(collision.gameObject);
+            StartCoroutine(Delay());
+            sr.enabled = true;
+        }
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(2);
     }
 
     public void PauseOn ()

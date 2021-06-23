@@ -13,6 +13,7 @@ TagManager:
   - LeftBorder
   - UpBorder
   - ButtomBorder
+  - Invisible
   layers:
   - Default
   - TransparentFX

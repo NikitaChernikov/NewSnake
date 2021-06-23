@@ -4,8 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class Player : MonoBehaviour
 {
+    /*int currentLevel = SceneManager.GetActiveScene().buildIndex;*/
+
+    public GameObject LevelScript;
+
+    private Level pass;
+
     Rigidbody2D rb;
     public float moveSpeed;
     public float rotateAmount;
@@ -37,6 +44,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pass = LevelScript.GetComponent<Level>();
+
         isWin = false;
         isDead = false;
         anim.SetBool("isWalk", true);
@@ -92,6 +101,13 @@ public class Player : MonoBehaviour
         {
             rb.velocity = transform.up * 0;
             winScreen.SetActive(true);
+
+
+            pass.Pass();
+            /*if (currentLevel >= PlayerPrefs.GetInt("levelsUnlocked"))
+            {
+                PlayerPrefs.SetInt("levelsUnlocked", currentLevel + 1);
+            }*/
         }
     }
 

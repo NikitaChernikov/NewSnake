@@ -8,7 +8,7 @@ public class RightSide : MonoBehaviour
     {
         if(other.tag == "Player" || other.tag == "Cloud")
         {
-            other.gameObject.transform.position = new Vector3(-225, other.gameObject.transform.position.y, -.5f);
+            other.gameObject.transform.position = new Vector3(-3.11f, other.gameObject.transform.position.y, -.5f);
         }
     }
 }

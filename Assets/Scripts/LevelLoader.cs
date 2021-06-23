@@ -9,23 +9,9 @@ public class LevelLoader : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
 
-   public  void StartLevel()
+   public  void StartLevel(int levelIndex)
     {
-        LoadNextLevel();
-    }
-
-    public void PlayLevelOne()
-    {
-         StartCoroutine(LoadLevel(1));
-    }
-    public void PlayLevelTwo()
-    {
-        StartCoroutine(LoadLevel(2));
-    }
-
-    public void PlayLevelThree()
-    {
-        StartCoroutine(LoadLevel(3));
+        StartCoroutine(LoadLevel(levelIndex));
     }
 
     public void RestartLevel()

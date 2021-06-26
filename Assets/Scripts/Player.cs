@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     public float StartTime;
     public float EndTime;
     public bool isWin;
+    public bool invis = false;
 
     public bool isPause = false;
 
@@ -57,7 +58,7 @@ public class Player : MonoBehaviour
 
         
 
-        if (!isWin && !isPause)
+        if (!isWin && !isPause && !isDead)
         {
             if (Input.GetMouseButton(0))
             {
@@ -110,6 +111,7 @@ public class Player : MonoBehaviour
         }
 
         
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -120,8 +122,8 @@ public class Player : MonoBehaviour
             {
                 Handheld.Vibrate();
             }
-            //FindObjectOfType<AudioManager>().Play("EatingSound");
-            anim.SetTrigger("doTouch");
+            FindObjectOfType<AudioManager>().Play("EatingSound");
+            if (!invis) anim.SetTrigger("doTouch");
             Destroy(collision.gameObject);
             moveSpeed += 0.5f;
             score++;
@@ -143,16 +145,30 @@ public class Player : MonoBehaviour
 
         else if (collision.gameObject.tag == "Invisible")
         {
-            this.sr.enabled = false;
+            FindObjectOfType<AudioManager>().Play("EatingSound");
+            invis = true;
             Destroy(collision.gameObject);
+            Dissapear();
             StartCoroutine(Delay());
-            sr.enabled = true;
+            
         }
+    }
+
+    public void Dissapear()
+    {
+        anim.SetBool("isInvis", true);
+    }
+
+    public void Appear()
+    {
+        anim.SetBool("isInvis", false);
+        invis = false;
     }
 
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
+        Appear();
     }
 
     public void PauseOn ()

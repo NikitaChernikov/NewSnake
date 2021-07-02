@@ -3622,7 +3622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6330418896831932584, guid: c278abbc3b7bf544195b533c301ba9b1, type: 3}
       propertyPath: winScore
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6330418896831932585, guid: c278abbc3b7bf544195b533c301ba9b1, type: 3}
       propertyPath: m_Enabled

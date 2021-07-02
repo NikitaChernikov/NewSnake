@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("EatingSound");
             if (!invis) anim.SetTrigger("doTouch");
             Destroy(collision.gameObject);
-            moveSpeed += 0.5f;
+            moveSpeed += 0.2f;
             score++;
 
             if(score >= winScore)

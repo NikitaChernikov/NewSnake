@@ -12,29 +12,52 @@ public class RandomSpawner : MonoBehaviour
     private float spawnRate = 2f;
     float nextSpawn = 0.0f;
 
-    private void Start()
-    {
-        
-    }
+    public Collider2D[] colliders;
+    public float radius;
 
     private void Update()
     {
+
+        bool canSpawnHere;
+
         if (Time.time > nextSpawn)
         {
             nextSpawn = Time.time + spawnRate;
             randX = Random.Range(-2.6f, 2.6f);
             randY = Random.Range(-4.8f, 4.8f);
             whereToSpawn = new Vector2(randX, randY);
-            
-            Instantiate(food, whereToSpawn, Quaternion.identity);
+            canSpawnHere = PreventSpawnOverlap(whereToSpawn);
 
-            StartCoroutine(Delay());
+            if (canSpawnHere)
+            {
+                GameObject newFood = Instantiate(food, whereToSpawn, Quaternion.identity) as GameObject;
+            }
         }
     }
 
-    IEnumerator Delay()
+    bool PreventSpawnOverlap(Vector3 whereToSpawn)
     {
-        yield return new WaitForSeconds(5);
-        Destroy(food);
+        colliders = Physics2D.OverlapCircleAll(transform.position, radius);
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            Vector3 centerPoint = colliders[i].bounds.center;
+            float width = colliders[i].bounds.extents.x;
+            float height = colliders[i].bounds.extents.y;
+
+            float leftExtent = centerPoint.x - width;
+            float rightExtent = centerPoint.x + width;
+            float lowerExtent = centerPoint.y - height;
+            float upperExtent = centerPoint.y + height;
+
+            if (whereToSpawn.x >= leftExtent && whereToSpawn.x <= rightExtent)
+            {
+                if (whereToSpawn.y >= lowerExtent && whereToSpawn.y <= upperExtent)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

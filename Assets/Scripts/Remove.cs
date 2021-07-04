@@ -9,6 +9,6 @@ public class Remove : MonoBehaviour
 
     private void Start()
     {
-        Destroy(food, 5f);
+        Destroy(food, 10f);
     }
 }

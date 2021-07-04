@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     public float EndTime;
     public bool isWin;
     public bool invis = false;
+    public bool invincibility = false;
 
     public bool isPause = false;
 
@@ -116,19 +117,19 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Food")
+        if (collision.gameObject.tag == "Food")
         {
             if (isVibrate)
             {
                 Handheld.Vibrate();
             }
             FindObjectOfType<AudioManager>().Play("EatingSound");
-            if (!invis) anim.SetTrigger("doTouch");
+            if (!invis && !invincibility) anim.SetTrigger("doTouch");
             Destroy(collision.gameObject);
             moveSpeed += 0.2f;
             score++;
 
-            if(score >= winScore)
+            if (score >= winScore)
             {
                 isWin = true;
                 FindObjectOfType<AudioManager>().Play("WinSound");
@@ -136,22 +137,60 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Danger")
         {
-            FindObjectOfType<AudioManager>().Play("DeathSound");
-            if (isVibrate)
-                Handheld.Vibrate();
-            isDead = true;
-            LoseScreen.SetActive(true);
+            if (!invincibility)
+            {
+                FindObjectOfType<AudioManager>().Play("DeathSound");
+                if (isVibrate)
+                    Handheld.Vibrate();
+                isDead = true;
+                LoseScreen.SetActive(true);
+            } else if (invincibility)
+            {
+                FindObjectOfType<AudioManager>().Play("Destroy");
+                Destroy(collision.gameObject);
+            }
         }
 
         else if (collision.gameObject.tag == "Invisible")
         {
-            FindObjectOfType<AudioManager>().Play("EatingSound");
-            invis = true;
-            Destroy(collision.gameObject);
-            Dissapear();
-            StartCoroutine(Delay());
-            
+            if (!invincibility)
+            {
+                FindObjectOfType<AudioManager>().Play("EatingSound");
+                invis = true;
+                Destroy(collision.gameObject);
+                Dissapear();
+                StartCoroutine(Delay());
+            } else
+            {
+                Destroy(collision.gameObject);
+            }
         }
+
+        else if (collision.gameObject.tag == "Invincible")
+        {
+            if (!invincibility)
+            {
+                FindObjectOfType<AudioManager>().Play("Armor");
+                invincibility = true;
+                Destroy(collision.gameObject);
+                Invincibility();
+                StartCoroutine(StayInvincible());
+            } else
+            {
+                Destroy(collision.gameObject);
+            }
+        }
+    }
+
+    public void Invincibility()
+    {
+        anim.SetTrigger("Invincible");
+    }
+
+    IEnumerator StayInvincible()
+    {
+        yield return new WaitForSeconds(6);
+        invincibility = false;
     }
 
     public void Dissapear()

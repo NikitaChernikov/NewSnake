@@ -14,6 +14,7 @@ TagManager:
   - UpBorder
   - ButtomBorder
   - Invisible
+  - Invincible
   layers:
   - Default
   - TransparentFX

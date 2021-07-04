@@ -60,5 +60,11 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 228a414c02aae104093ef692ae2bae7d, type: 3}
     volume: 1
     pitch: 1
-    loop: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Armor
+    clip: {fileID: 8300000, guid: 457157dfca42bf1478ea6e5688138702, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
     source: {fileID: 0}

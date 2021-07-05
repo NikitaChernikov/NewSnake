@@ -3669,7 +3669,7 @@ Animator:
   m_GameObject: {fileID: 1839912696}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cf4db5108a8b1874692fcde7c19517c8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9327c137e9a65c94c93d1060893da8ec, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4497,7 +4497,7 @@ Animator:
   m_GameObject: {fileID: 2070717310}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cf4db5108a8b1874692fcde7c19517c8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9327c137e9a65c94c93d1060893da8ec, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4706,7 +4706,7 @@ Animator:
   m_GameObject: {fileID: 2133587766}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cf4db5108a8b1874692fcde7c19517c8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9327c137e9a65c94c93d1060893da8ec, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4883,6 +4883,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Danger
       objectReference: {fileID: 0}
+    - target: {fileID: 1747891115966616549, guid: 0c9f6183a893be14aad05b2b896d673d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9327c137e9a65c94c93d1060893da8ec, type: 2}
     - target: {fileID: 1747891115966616551, guid: 0c9f6183a893be14aad05b2b896d673d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.11

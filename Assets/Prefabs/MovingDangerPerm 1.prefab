@@ -252,7 +252,7 @@ Animator:
   m_GameObject: {fileID: 6448932114463771004}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cf4db5108a8b1874692fcde7c19517c8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9327c137e9a65c94c93d1060893da8ec, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -352,7 +352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6448932115777001641}
   m_Layer: 0
-  m_Name: MovingDanger 1
+  m_Name: MovingDangerPerm 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

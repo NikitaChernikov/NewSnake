@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1747891115966616550}
   - component: {fileID: 1747891115966616549}
   m_Layer: 0
-  m_Name: Danger
+  m_Name: DangerPerm
   m_TagString: Danger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,7 +203,7 @@ Animator:
   m_GameObject: {fileID: 1747891115966616545}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cf4db5108a8b1874692fcde7c19517c8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9327c137e9a65c94c93d1060893da8ec, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

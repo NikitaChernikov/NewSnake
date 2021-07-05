@@ -180,6 +180,13 @@ public class Player : MonoBehaviour
                 Destroy(collision.gameObject);
             }
         }
+        else if (collision.gameObject.tag == "Hitter")
+        {
+            FindObjectOfType<AudioManager>().Play("EatingSound");
+            Destroy(collision.gameObject);
+            moveSpeed += 0.2f;
+            BossOne.GetHit();
+        }
     }
 
     public void Invincibility()

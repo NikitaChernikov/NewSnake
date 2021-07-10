@@ -31,8 +31,6 @@ public class Player : MonoBehaviour
     public bool invis = false;
     public bool invincibility = false;
 
-    public bool isPause = false;
-
     public bool isVibrate;
 
     private void Awake()
@@ -59,7 +57,7 @@ public class Player : MonoBehaviour
 
         
 
-        if (!isWin && !isPause && !isDead)
+        if (!isWin && !isDead)
         {
             if (Input.GetMouseButton(0))
             {
@@ -83,13 +81,9 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isDead && !isWin && !isPause)
+        if (!isDead && !isWin)
         {
             rb.velocity = transform.up * moveSpeed; 
-        }
-        else if (isPause)
-        {
-            rb.velocity = transform.up * 0;
         }
         else if (isDead)
         {
@@ -215,17 +209,5 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         Appear();
-    }
-
-    public void PauseOn ()
-    {
-        FindObjectOfType<AudioManager>().Play("PauseIn");
-        isPause = true;
-    }
-
-    public void PauseOff()
-    {
-        FindObjectOfType<AudioManager>().Play("PauseOut");
-        isPause = false;
     }
 }

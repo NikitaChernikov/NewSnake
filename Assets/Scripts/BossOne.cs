@@ -9,6 +9,12 @@ public class BossOne : MonoBehaviour
     int move;
     static int health;
 
+    [SerializeField]
+    private GameObject food;
+    float randX, randY;
+    Vector2 whereToSpawn;
+
+
 
     void Start()
     {
@@ -24,7 +30,18 @@ public class BossOne : MonoBehaviour
         {
             anim.SetTrigger("IsDead");
             Destroy(this.gameObject, 2f);
+            SpawnFood();
         }
+
+
+    }
+
+    private void SpawnFood()
+    {
+        randX = 0f;
+        randY = 0f;
+        whereToSpawn = new Vector2(randX, randY);
+        GameObject newFood = Instantiate(food, whereToSpawn, Quaternion.identity) as GameObject;
     }
 
     public void RandomMove()
@@ -50,6 +67,7 @@ public class BossOne : MonoBehaviour
                 break;
         }
     }
+    
 
 
     IEnumerator Delay()

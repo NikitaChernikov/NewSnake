@@ -5,7 +5,7 @@ using UnityEngine;
 public class SharkMoving : MonoBehaviour
 {
 
-    public Transform player;
+    Transform player;
     private Rigidbody2D rb;
     private Vector2 movement;
     public float moveSpeed = 0.5f;

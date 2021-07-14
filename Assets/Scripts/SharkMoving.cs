@@ -10,6 +10,8 @@ public class SharkMoving : MonoBehaviour
     private Vector2 movement;
     public float moveSpeed = 0.5f;
 
+    Animator anim;
+
     [SerializeField]
     private GameObject food;
     float randX, randY;
@@ -18,7 +20,10 @@ public class SharkMoving : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<Player>().transform;
         rb = this.GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        anim.SetBool("isWalk", true);
     }
 
     // Update is called once per frame

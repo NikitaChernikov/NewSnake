@@ -12,6 +12,8 @@ public class SharkMoving : MonoBehaviour
 
     Animator anim;
 
+    int health = 5;
+
     [SerializeField]
     private GameObject food;
     float randX, randY;
@@ -23,12 +25,18 @@ public class SharkMoving : MonoBehaviour
         player = FindObjectOfType<Player>().transform;
         rb = this.GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        anim.SetBool("isWalk", true);
+        anim.SetTrigger("BossWalk");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (health == 0)
+        {
+            Destroy(this.gameObject);
+            SpawnFood();
+
+        }
         Vector3 direction = player.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rb.rotation = angle;
@@ -50,9 +58,10 @@ public class SharkMoving : MonoBehaviour
     {
         if (collision.gameObject.tag == "Danger")
         {
-            Destroy(this.gameObject);
             FindObjectOfType<AudioManager>().Play("Destroy");
-            SpawnFood();
+            Destroy(collision.gameObject);
+            anim.SetTrigger("HitTheBoss");
+            HitTheBoss();
         }
     }
 
@@ -63,5 +72,17 @@ public class SharkMoving : MonoBehaviour
         randY = transform.position.y;
         whereToSpawn = new Vector2(randX, randY);
         GameObject newFood = Instantiate(food, whereToSpawn, Quaternion.identity) as GameObject;
+    }
+
+    void HitTheBoss()
+    {
+        health -= 1;
+        StartCoroutine(Delay());
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(0.3f);
+        anim.SetTrigger("BossWalk");
     }
 }

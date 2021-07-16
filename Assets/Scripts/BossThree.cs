@@ -20,7 +20,6 @@ public class BossThree : MonoBehaviour
         localScale = transform.localScale;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        FallDown();
     }
 
     // Update is called once per frame
@@ -50,11 +49,6 @@ public class BossThree : MonoBehaviour
         movingRight = false;
         direction = -1;
         rb.velocity = new Vector2(direction * moveSpeed, rb.velocity.y);
-    }
-
-    void FallDown()
-    {
-        rb.gravityScale = 0.5f;
     }
 
 

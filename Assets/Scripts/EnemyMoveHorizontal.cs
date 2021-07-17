@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class EnemyMoveHorizontal : MonoBehaviour
 {
-
-    
-    GameObject firstSide, secondSide;
     Vector3 localScale;
     bool movingRight = true;
     Rigidbody2D rb;
@@ -21,22 +18,11 @@ public class EnemyMoveHorizontal : MonoBehaviour
         localScale = transform.localScale;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        //firstSide = GameObject.Find("FirstSide").GetComponent<Transform>();
-        //secondSide = GameObject.Find("SecondSide").GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*if (transform.position.x > secondSide.transform.position.x)
-        {
-            movingRight = false;
-        }
-        if (transform.position.x < firstSide.transform.position.x)
-        {
-            movingRight = true;
-        }*/
-
         if (movingRight)
         {
             moveToSecondSide();

@@ -4,73 +4,76 @@ using UnityEngine;
 
 public class BossThree : MonoBehaviour
 {
-    Vector3 localScale;
     bool movingRight = true;
     Rigidbody2D rb;
     SpriteRenderer sr;
 
-    public int direction;
+    int direction;
 
-    public int fall;
+    bool falling = true;
+
+    bool down = true;
+
+    int sec;
+
+    int counter = 0;
+
+    float randX, randY;
+    Vector2 whereToSpawn;
 
     [SerializeField]
     public float moveSpeed;
+    [SerializeField]
+    private GameObject food;
 
     // Start is called before the first frame update
     void Start()
     {
-        localScale = transform.localScale;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        RandomMove();
     }
 
     // Update is called once per frame
-    void RandomMove()
+    void Update()
     {
-        fall = Random.Range(0, 2);
-        Debug.Log(fall);
-        if (fall == 0)
+        if(counter >= 6)
         {
-            MoveHorizontal();
+            Destroy(this.gameObject);
         }
-        else if (fall == 1)
+
+        if (!falling)
         {
-            MoveVertical();
+            rb.velocity = new Vector2(0, 0);
+            if (movingRight)
+            {
+                moveToSecondSide();
+            }
+            else if (!movingRight)
+            {
+                moveToFirstSide();
+            }
         }
-        StartCoroutine(DelayRandom());
+        else if (falling)
+        {
+            rb.velocity = new Vector2(0, 0);
+            if (down)
+            {
+                FallDown();
+            }
+            else if (!down)
+            {
+                MoveUp();
+            }
+        }
     }
 
-    IEnumerator DelayRandom()
-    {
-        yield return new WaitForSeconds(3);
-        RandomMove();
-    }
-
-    public void MoveHorizontal()
-    {
-        if (movingRight)
-        {
-            moveToSecondSide();
-        }
-        else
-        {
-            moveToFirstSide();
-        }
-    }
-
-    public void MoveVertical()
-    {
-        MoveDown();
-    }
-
-    public void MoveDown()
+    void FallDown()
     {
         direction = -1;
-        rb.velocity = new Vector2(rb.velocity.x, direction * moveSpeed * 3);
+        rb.velocity = new Vector2(rb.velocity.x, direction * moveSpeed * 5);
     }
 
-    public void MoveUp()
+    void MoveUp()
     {
         direction = 1;
         rb.velocity = new Vector2(rb.velocity.x, direction * moveSpeed * 3);
@@ -98,17 +101,35 @@ public class BossThree : MonoBehaviour
         if (collision.gameObject.tag == "RightBorder")
         {
             movingRight = false;
-            moveToFirstSide();
         }
         else if (collision.gameObject.tag == "LeftBorder")
         {
             movingRight = true;
-            moveToSecondSide();
         }
 
         if (collision.gameObject.tag == "ButtomBorder")
         {
-            MoveUp();
+            down = false;
+            randX = gameObject.transform.position.x;
+            randY = gameObject.transform.position.y;
+            whereToSpawn = new Vector2(randX, randY);
+            GameObject newFood = Instantiate(food, whereToSpawn, Quaternion.identity) as GameObject;
+            counter += 1;
         }
+        else if(collision.gameObject.tag == "UpBorder")
+        {
+            down = true;
+            falling = false;
+            StartCoroutine(Delay());
+        }
+    }
+
+    
+
+    IEnumerator Delay()
+    {
+        sec = Random.Range(2, 8);
+        yield return new WaitForSeconds(sec);
+        falling = true;
     }
 }

@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
             {
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-                if (mousePos.x < 0)
+                if (mousePos.x < gameObject.transform.position.x)
                 {
                     sr.flipX = true;
                     rot = rotateAmount;

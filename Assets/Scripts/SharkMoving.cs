@@ -22,7 +22,7 @@ public class SharkMoving : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<Player>().transform;
+        player = FindObjectOfType<PlayerInfinity>().transform;
         rb = this.GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         anim.SetTrigger("BossWalk");
@@ -60,6 +60,7 @@ public class SharkMoving : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().Play("Destroy");
             Destroy(collision.gameObject);
+            Destroy(this.gameObject);
             anim.SetTrigger("HitTheBoss");
             HitTheBoss();
         }

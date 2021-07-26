@@ -1,13 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-
-public class Player : MonoBehaviour
+public class PlayerInfinity : MonoBehaviour
 {
-
     public GameObject LevelScript;
 
     private Level pass;
@@ -63,7 +59,7 @@ public class Player : MonoBehaviour
             {
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-                if (mousePos.x < 0)
+                if (mousePos.x < gameObject.transform.position.x)
                 {
                     sr.flipX = true;
                     rot = rotateAmount;
@@ -129,7 +125,7 @@ public class Player : MonoBehaviour
                 FindObjectOfType<AudioManager>().Play("WinSound");
             }
         }
-        else if (collision.gameObject.tag == "Danger" || collision.gameObject.tag == "Boss")
+        else if (collision.gameObject.tag == "Danger")
         {
             if (!invincibility)
             {
@@ -138,13 +134,28 @@ public class Player : MonoBehaviour
                     Handheld.Vibrate();
                 isDead = true;
                 LoseScreen.SetActive(true);
-            } else if (invincibility)
+            }
+            else if (invincibility)
             {
                 FindObjectOfType<AudioManager>().Play("Destroy");
                 Destroy(collision.gameObject);
             }
         }
-
+        else if (collision.gameObject.tag == "Boss")
+        {
+            if (!invincibility)
+            {
+                FindObjectOfType<AudioManager>().Play("DeathSound");
+                if (isVibrate)
+                    Handheld.Vibrate();
+                isDead = true;
+                LoseScreen.SetActive(true);
+            }
+            else if (invincibility)
+            {
+                BossFour.GetHit();
+            }
+        }
         else if (collision.gameObject.tag == "Invisible")
         {
             if (!invincibility)
@@ -154,7 +165,8 @@ public class Player : MonoBehaviour
                 Destroy(collision.gameObject);
                 Dissapear();
                 StartCoroutine(Delay());
-            } else
+            }
+            else
             {
                 Destroy(collision.gameObject);
             }
@@ -169,7 +181,8 @@ public class Player : MonoBehaviour
                 Destroy(collision.gameObject);
                 Invincibility();
                 StartCoroutine(StayInvincible());
-            } else
+            }
+            else
             {
                 Destroy(collision.gameObject);
             }

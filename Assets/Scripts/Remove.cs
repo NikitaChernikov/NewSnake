@@ -11,4 +11,6 @@ public class Remove : MonoBehaviour
     {
         Destroy(food, 10f);
     }
+
+
 }

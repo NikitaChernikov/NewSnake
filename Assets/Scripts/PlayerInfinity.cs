@@ -13,7 +13,7 @@ public class PlayerInfinity : MonoBehaviour
     public float rotateAmount;
     public int winScore;
     float rot;
-    int score;
+    int score = 0;
 
     public GameObject winScreen;
     public GameObject LoseScreen;
@@ -113,13 +113,13 @@ public class PlayerInfinity : MonoBehaviour
             {
                 Handheld.Vibrate();
             }
-            FindObjectOfType<AudioManager>().Play("EatingSound");
+            //FindObjectOfType<AudioManager>().Play("EatingSound");
             if (!invis && !invincibility) anim.SetTrigger("doTouch");
             Destroy(collision.gameObject);
             moveSpeed += 0.2f;
             score++;
 
-            if (score >= winScore)
+            if (score > winScore)
             {
                 isWin = true;
                 FindObjectOfType<AudioManager>().Play("WinSound");
@@ -129,7 +129,7 @@ public class PlayerInfinity : MonoBehaviour
         {
             if (!invincibility)
             {
-                FindObjectOfType<AudioManager>().Play("DeathSound");
+                //FindObjectOfType<AudioManager>().Play("DeathSound");
                 if (isVibrate)
                     Handheld.Vibrate();
                 isDead = true;
@@ -145,15 +145,11 @@ public class PlayerInfinity : MonoBehaviour
         {
             if (!invincibility)
             {
-                FindObjectOfType<AudioManager>().Play("DeathSound");
+                //FindObjectOfType<AudioManager>().Play("DeathSound");
                 if (isVibrate)
                     Handheld.Vibrate();
                 isDead = true;
                 LoseScreen.SetActive(true);
-            }
-            else if (invincibility)
-            {
-                BossFour.GetHit();
             }
         }
         else if (collision.gameObject.tag == "Invisible")
@@ -222,5 +218,10 @@ public class PlayerInfinity : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         Appear();
+    }
+
+    public int GetScore()
+    {
+        return score;
     }
 }

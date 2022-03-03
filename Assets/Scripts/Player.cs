@@ -15,7 +15,8 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     public float moveSpeed;
     public float rotateAmount;
-    public int winScore;
+    [SerializeField] public int winScore;
+    [SerializeField] Text ScoreText;
     float rot;
     int score;
 
@@ -43,7 +44,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        ScoreText.text = score.ToString() + "/" + winScore;
         pass = LevelScript.GetComponent<Level>();
 
         isWin = false;
@@ -122,6 +123,7 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
             moveSpeed += 0.2f;
             score++;
+            ScoreText.text = score.ToString() + "/" + winScore;
 
             if (score >= winScore)
             {

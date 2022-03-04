@@ -5,15 +5,11 @@ using UnityEngine;
 public class BossFour : MonoBehaviour
 {
     [SerializeField] GameObject spawners;
+    [SerializeField] GameObject hammer;
     int cooldown = 1;
     float timer = 0;
     int angle = 0;
     int score;
-
-    private void Start()
-    {
-        
-    }
 
     private void Update()
     {
@@ -28,6 +24,10 @@ public class BossFour : MonoBehaviour
                 timer = 0;
             }
         }
+        else
+        {
+            GameObject buf = Instantiate(hammer);
+            buf.transform.position = transform.position + new Vector3(0, -1.5f, 0);
+        }
     }
-
 }

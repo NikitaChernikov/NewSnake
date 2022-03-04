@@ -23,7 +23,7 @@ public class SharkMoving : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<PlayerInfinity>().transform;
-        rb = this.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         anim.SetTrigger("BossWalk");
     }

@@ -113,7 +113,7 @@ public class PlayerInfinity : MonoBehaviour
             {
                 Handheld.Vibrate();
             }
-            //FindObjectOfType<AudioManager>().Play("EatingSound");
+            FindObjectOfType<AudioManager>().Play("EatingSound");
             if (!invis && !invincibility) anim.SetTrigger("doTouch");
             Destroy(collision.gameObject);
             moveSpeed += 0.2f;
@@ -129,7 +129,7 @@ public class PlayerInfinity : MonoBehaviour
         {
             if (!invincibility)
             {
-                //FindObjectOfType<AudioManager>().Play("DeathSound");
+                FindObjectOfType<AudioManager>().Play("DeathSound");
                 if (isVibrate)
                     Handheld.Vibrate();
                 isDead = true;
@@ -145,11 +145,16 @@ public class PlayerInfinity : MonoBehaviour
         {
             if (!invincibility)
             {
-                //FindObjectOfType<AudioManager>().Play("DeathSound");
+                FindObjectOfType<AudioManager>().Play("DeathSound");
                 if (isVibrate)
                     Handheld.Vibrate();
                 isDead = true;
                 LoseScreen.SetActive(true);
+            }
+            else if (invincibility)
+            {
+                FindObjectOfType<AudioManager>().Play("Destroy");
+                Destroy(collision.gameObject);
             }
         }
         else if (collision.gameObject.tag == "Invisible")
